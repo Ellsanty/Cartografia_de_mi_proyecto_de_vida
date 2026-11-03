@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi proyecto de vida — Santiago</title>
+<style>
+:root{
+  --cream:#f6f1e8; --cream2:#efe7d8; --paper:#ffffff;
+  --ink:#20211d; --ink2:#55524a; --mut:#8a8578;
+  --gold:#b58838; --gold-d:#9a6f25; --gold-soft:#e7d7b4;
+  --line:rgba(32,33,29,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Helvetica Neue',Arial,system-ui,-apple-system,sans-serif;color:var(--ink);background:var(--cream);line-height:1.7;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4,.serif{font-family:Georgia,'Times New Roman',serif}
+/* ---- header ---- */
+header{position:sticky;top:0;z-index:60;background:rgba(246,241,232,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{max-width:1120px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{font-family:Georgia,serif;font-weight:700;font-size:18px;letter-spacing:.3px}
+.brand b{color:var(--gold-d)}
+.menu{display:flex;gap:22px;flex-wrap:wrap}
+.menu a{color:var(--ink2);text-decoration:none;font-size:14px;letter-spacing:.3px;position:relative;padding:4px 0;transition:color .25s}
+.menu a::after{content:'';position:absolute;left:0;bottom:0;width:0;height:2px;background:var(--gold);transition:width .3s}
+.menu a:hover{color:var(--ink)}.menu a:hover::after{width:100%}
+@media(max-width:780px){.menu{display:none}}
+/* ---- secciones ---- */
+section{padding:92px 24px}
+section.alt{background:var(--paper)}
+.inner{max-width:1120px;margin:0 auto}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--gold-d);font-weight:700;margin-bottom:16px}
+.eyebrow::before{content:'';width:28px;height:2px;background:var(--gold)}
+h2{font-size:clamp(28px,4.6vw,44px);line-height:1.12;font-weight:700;letter-spacing:-.5px;margin-bottom:14px}
+.lead{color:var(--ink2);font-size:clamp(16px,1.9vw,18px);max-width:680px;margin-bottom:40px}
+/* ---- reveal (fade-in al cargar, siempre termina visible) ---- */
+.reveal{opacity:0;transform:translateY(26px);animation:rise .8s cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+.d1{animation-delay:.08s}.d2{animation-delay:.16s}.d3{animation-delay:.24s}.d4{animation-delay:.32s}.d5{animation-delay:.4s}.d6{animation-delay:.48s}
+/* ---- cards ---- */
+.grid{display:grid;gap:22px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:860px){.g2,.g3{grid-template-columns:1fr}}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:28px;box-shadow:0 1px 2px rgba(0,0,0,.04);transition:transform .35s ease,box-shadow .35s ease,border-color .35s}
+section.alt .card{background:var(--cream)}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(32,33,29,.12);border-color:var(--gold-soft)}
+.card .ic{font-size:26px;display:inline-flex;width:52px;height:52px;align-items:center;justify-content:center;border-radius:12px;background:var(--cream2);border:1px solid var(--line);margin-bottom:16px}
+section.alt .card .ic{background:var(--paper)}
+.card h3{font-size:19px;margin-bottom:8px}
+.card p{color:var(--ink2);font-size:15px;line-height:1.65}
+.card .tag{display:inline-block;margin-top:14px;font-size:12px;color:var(--gold-d);background:var(--cream2);border:1px solid var(--gold-soft);padding:4px 11px;border-radius:999px;letter-spacing:.3px}
+section.alt .card .tag{background:var(--paper)}
+/* ---- hero ---- */
+#hero{background:linear-gradient(180deg,var(--cream),var(--cream2));padding-top:120px;padding-bottom:110px;position:relative;overflow:hidden}
+#hero .inner{position:relative;z-index:2}
+.hero-tag{font-size:13px;letter-spacing:4px;text-transform:uppercase;color:var(--gold-d);font-weight:700;margin-bottom:22px}
+.hero-title{font-size:clamp(40px,7.5vw,74px);line-height:1.04;font-weight:700;letter-spacing:-1.5px}
+.hero-title em{font-style:italic;color:var(--gold-d)}
+.hero-sub{color:var(--ink2);font-size:clamp(16px,2.2vw,20px);max-width:620px;margin-top:24px}
+.pills{margin-top:34px;display:flex;flex-wrap:wrap;gap:12px}
+.pill{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:9px 18px;font-size:14px;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.pill b{color:var(--gold-d)}
+.hero-line{width:72px;height:4px;background:var(--gold);border-radius:4px;margin:30px 0 0}
+/* ---- timeline ---- */
+.tl{position:relative;padding-left:36px}
+.tl::before{content:'';position:absolute;left:12px;top:8px;bottom:8px;width:2px;background:var(--gold-soft)}
+.node{position:relative;margin-bottom:30px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px 24px;transition:transform .3s,box-shadow .3s}
+section.alt .node{background:var(--cream)}
+.node:hover{transform:translateX(4px);box-shadow:0 12px 30px rgba(32,33,29,.1)}
+.node::before{content:'';position:absolute;left:-30px;top:26px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:3px solid var(--gold)}
+.node .when{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--gold-d);font-weight:700}
+.node h4{font-size:18px;margin:5px 0 6px}
+.node p{color:var(--ink2);font-size:15px}
+/* ---- engine ---- */
+.engine{display:flex;flex-wrap:wrap;gap:16px}
+.gear{flex:1 1 180px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:22px;transition:transform .3s,box-shadow .3s}
+section.alt .gear{background:var(--cream)}
+.gear:hover{transform:translateY(-6px);box-shadow:0 16px 36px rgba(32,33,29,.12)}
+.gear .e{font-size:28px}
+.gear span{display:block;font-family:Georgia,serif;font-weight:700;font-size:17px;margin:8px 0 4px}
+.gear small{color:var(--ink2);font-size:13.5px}
+/* ---- destino ---- */
+#destino{background:var(--ink);color:#f3efe6}
+#destino .eyebrow{color:var(--gold-soft)}
+#destino .eyebrow::before{background:var(--gold-soft)}
+#destino h2{color:#fff}
+.quote{font-family:Georgia,serif;font-size:clamp(20px,3vw,30px);line-height:1.5;max-width:860px;color:#f3efe6;font-weight:400}
+.quote b{color:var(--gold-soft);font-weight:700}
+.beacon{font-size:46px;margin-bottom:16px}
+/* ---- reflexion ---- */
+.essay{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:clamp(26px,4vw,50px);box-shadow:0 2px 10px rgba(0,0,0,.04);max-width:820px}
+.essay p{margin-bottom:18px;color:var(--ink2);font-size:16.5px;line-height:1.8}
+.essay p.first::first-letter{font-family:Georgia,serif;font-size:50px;font-weight:700;float:left;line-height:.9;padding:6px 12px 0 0;color:var(--gold-d)}
+/* ---- footer ---- */
+footer{background:var(--cream2);border-top:1px solid var(--line);text-align:center;padding:46px 24px;color:var(--ink2);font-size:14px}
+footer b{color:var(--gold-d)}
+footer .fl{width:48px;height:3px;background:var(--gold);border-radius:3px;margin:0 auto 18px}
+</style>
+</head>
+<body>
+<header>
+ <div class="bar">
+  <div class="brand">Mi proyecto de vida <b>· Santiago</b></div>
+  <nav class="menu">
+   <a href="#partida">Origen</a>
+   <a href="#presente">Presente</a>
+   <a href="#retos">Retos</a>
+   <a href="#aliados">Aliados</a>
+   <a href="#metas">Metas</a>
+   <a href="#ruta">Mi ruta</a>
+   <a href="#destino">Destino</a>
+  </nav>
+ </div>
+</header>
+
+<!-- HERO -->
+<section id="hero">
+ <div class="inner">
+  <div class="hero-tag reveal">Cartografía de mi proyecto de vida</div>
+  <h1 class="hero-title reveal d1">Mi camino,<br><em>a mi manera</em></h1>
+  <p class="hero-sub reveal d2">No soy de los que ven la vida como un río o una montaña. Para mí todo se mueve por algo más simple: las ganas de hacer bien las cosas y la gente que tengo al lado.</p>
+  <div class="hero-line reveal d2"></div>
+  <div class="pills reveal d3">
+   <span class="pill"><b>Técnico Profesional</b> en Desarrollo de Software</span>
+   <span class="pill">Universidad de la Costa · Barranquilla</span>
+   <span class="pill">2º semestre</span>
+  </div>
+ </div>
+</section>
+
+<!-- PUNTO DE PARTIDA -->
+<section id="partida" class="alt">
+ <div class="inner">
+  <div class="reveal"><span class="eyebrow">Punto de partida</span>
+  <h2>De dónde vengo</h2>
+  <p class="lead">Si miro para atrás, me doy cuenta de que lo que más me ha formado no son los lugares por los que pasé, sino las personas. De ellas aprendí casi todo lo que soy.</p></div>
+  <div class="grid g2">
+   <div class="card reveal d1"><span class="ic">🤝</span><h3>Mi mejor amigo</h3><p>Llevamos años de amistad y, aunque cada uno cogió su rumbo y a veces pasamos tiempo sin hablar por la distancia, la confianza sigue igualita. Me quedo con su sencillez y su humildad, con esa forma tan suya de hacer las cosas. Cuando nos vemos, la pasamos bien y ya.</p><span class="tag">Confianza de años</span></div>
+   <div class="card reveal d2"><span class="ic">✨</span><h3>Mi mejor amiga</h3><p>La conocí este año y de una hubo buena química. Podemos hablar de lo que sea, reírnos de lo que sea y tratarnos bonito. Saber que vamos a estar el uno para el otro me da una tranquilidad que vale mucho.</p><span class="tag">Conexión que fluye</span></div>
+   <div class="card reveal d3"><span class="ic">👪</span><h3>Mis papás</h3><p>Mi papá y mi mamá son la base de todo. Gran parte de lo que pienso y de cómo enfrento las cosas viene de ellos.</p><span class="tag">Mi base</span></div>
+   <div class="card reveal d4"><span class="ic">🧠</span><h3>Los que me han guiado</h3><p>Entrenadores de fútbol, profes del colegio y ahora de la universidad. Cada uno, en su momento, me fue marcando el camino. Siempre he tenido a alguien que me orienta.</p><span class="tag">Maestros y entrenadores</span></div>
+  </div>
+ </div>
+</section>
+<!-- PRESENTE -->
+<section id="presente">
+ <div class="inner">
+  <div class="reveal"><span class="eyebrow">Mi presente</span>
+  <h2>Dónde estoy hoy</h2>
+  <p class="lead">Hoy por hoy, donde mejor me muevo es con la gente y hablando. Ahí es donde siento que tengo lo mío.</p></div>
+  <div class="grid g3">
+   <div class="card reveal d1"><span class="ic">🎙️</span><h3>Hablar y explicar</h3><p>Se me da bien explicar. A veces arranco medio enredado y lo entiendo solo yo, pero me pongo a dar ejemplos y al final la otra persona capta la idea. Exponer es de lo que mejor hago.</p></div>
+   <div class="card reveal d2"><span class="ic">😊</span><h3>Me relaciono fácil</h3><p>No soy penoso. Me acerco a la gente sin problema y me gusta socializar. Solo me da algo de pena cuando el público es muy grande o en situaciones muy puntuales.</p></div>
+   <div class="card reveal d3"><span class="ic">⚡</span><h3>Agarro confianza rápido</h3><p>Cuando hay buena química, agarro confianza de una. Casi todas las amistades fuertes que tengo nacieron de ese clic del momento.</p></div>
+   <div class="card reveal d4"><span class="ic">💻</span><h3>Me gusta lo que estudio</h3><p>Estudio desarrollo de software con ganas de verdad de meterme al mundo laboral. La programación me emociona y quiero dedicarme a eso.</p></div>
+   <div class="card reveal d5"><span class="ic">⚽</span><h3>Soy deportivo</h3><p>El fútbol me encanta. De ahí saqué algo que uso para todo: las cosas se van logrando de a poco, superando obstáculos.</p></div>
+   <div class="card reveal d6"><span class="ic">🎯</span><h3>Soy constante</h3><p>Trabajo con disciplina y tratando de hacer las cosas bien. No espero a tener ganas, me mantengo firme y ya.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- RETOS -->
+<section id="retos" class="alt">
+ <div class="inner">
+  <div class="reveal"><span class="eyebrow">Obstáculos y desafíos</span>
+  <h2>Lo que me falta pulir</h2>
+  <p class="lead">No todo es fortaleza, y prefiero ser sincero con lo que todavía tengo que mejorar.</p></div>
+  <div class="grid g2">
+   <div class="card reveal d1"><span class="ic">✍️</span><h3>Escribir</h3><p>Escribir no es lo mío todavía. La ortografía, los puntos y las comas se me complican y suelo tener errores. Me expreso mucho mejor hablando, así que mi reto es pasar esa misma claridad al papel.</p><span class="tag">En eso estoy</span></div>
+   <div class="card reveal d2"><span class="ic">🏟️</span><h3>El público grande</h3><p>Hablando estoy cómodo, pero cuando el público es muy grande me entra algo de pena. Es algo que quiero ir soltando con práctica.</p><span class="tag">A punta de práctica</span></div>
+  </div>
+ </div>
+</section>
+<!-- ALIADOS -->
+<section id="aliados">
+ <div class="inner">
+  <div class="reveal"><span class="eyebrow">Recursos y aliados</span>
+  <h2>Los que me acompañan</h2>
+  <p class="lead">No hago esto solo. Mi mejor recurso es la gente que siempre está ahí, más lo que voy aprendiendo en el camino.</p></div>
+  <div class="grid g3">
+   <div class="card reveal d1"><span class="ic">👪</span><h3>Mi familia</h3><p>Mis papás, mi apoyo de siempre.</p></div>
+   <div class="card reveal d2"><span class="ic">🤝</span><h3>Mis amistades</h3><p>Mi mejor amigo y mi mejor amiga, un respaldo sin condiciones.</p></div>
+   <div class="card reveal d3"><span class="ic">🎓</span><h3>La universidad</h3><p>La Universidad de la Costa y sus profes, que me van formando.</p></div>
+   <div class="card reveal d4"><span class="ic">🧑‍🏫</span><h3>Mis mentores</h3><p>Entrenadores y docentes que me han guiado desde chiquito.</p></div>
+   <div class="card reveal d5"><span class="ic">⌨️</span><h3>Lo que sé hacer</h3><p>Lo que voy aprendiendo de programación, semestre a semestre.</p></div>
+   <div class="card reveal d6"><span class="ic">🔥</span><h3>Mi actitud</h3><p>Las ganas, la disciplina y la facilidad para caerle bien a la gente.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- METAS -->
+<section id="metas" class="alt">
+ <div class="inner">
+  <div class="reveal"><span class="eyebrow">Metas</span>
+  <h2>Para dónde voy</h2>
+  <p class="lead">Mis metas van encadenadas. Cada una me abre la puerta de la siguiente.</p></div>
+  <div class="tl">
+   <div class="node reveal d1"><div class="when">Corto plazo</div><h4>Graduarme de Técnico en Desarrollo de Software</h4><p>Ya voy en segundo semestre y el otro año termino, con 18 años. Es lo primero que quiero sacar adelante.</p></div>
+   <div class="node reveal d2"><div class="when">Mediano plazo</div><h4>Homologar a Ingeniería de Sistemas y empezar a trabajar</h4><p>Seguir con la ingeniería y, al mismo tiempo, entrar como programador junior. Me muero por meterme ya al mundo laboral.</p></div>
+   <div class="node reveal d3"><div class="when">Mediano plazo · en paralelo</div><h4>El fútbol, paso a paso</h4><p>Si se da, llevar el fútbol lo más lejos posible, metiendo y superando obstáculos, a ver si llego a nivel profesional.</p></div>
+   <div class="node reveal d4"><div class="when">Largo plazo</div><h4>Ser un buen profesional y formar mi familia</h4><p>Tener mi carro, viajar por el mundo, vivir en otro país y aprender idiomas. Y lo más grande: armar una buena familia en un lugar con buena salud, buena economía y buena vivienda.</p></div>
+  </div>
+ </div>
+</section>
+<!-- RUTA -->
+<section id="ruta">
+ <div class="inner">
+  <div class="reveal"><span class="eyebrow">Mi ruta de acción</span>
+  <h2>Lo que me mueve cada día</h2>
+  <p class="lead">No me imagino mi vida como un viaje ni una montaña. La veo más bien en lo que me empuja todos los días.</p></div>
+  <div class="engine">
+   <div class="gear reveal d1"><span class="e">🎯</span><span>Disciplina</span><small>Hacer lo que toca, aunque no tenga ganas.</small></div>
+   <div class="gear reveal d2"><span class="e">🔥</span><span>Motivación</span><small>Ganas de verdad de salir adelante.</small></div>
+   <div class="gear reveal d3"><span class="e">🧩</span><span>Enfoque</span><small>Una meta a la vez, sin perder el norte.</small></div>
+   <div class="gear reveal d4"><span class="e">✅</span><span>Hacer las cosas bien</span><small>Que lo que haga, quede bien hecho.</small></div>
+   <div class="gear reveal d5"><span class="e">👥</span><span>Mi gente</span><small>Los que siempre me están apoyando.</small></div>
+  </div>
+ </div>
+</section>
+
+<!-- DESTINO -->
+<section id="destino">
+ <div class="inner">
+  <div class="reveal"><span class="eyebrow">Destino</span>
+  <div class="beacon">🧭</div>
+  <h2>En quién quiero convertirme</h2>
+  <p class="quote">Quiero llegar a ser un <b>buen profesional del software</b>, de esos que entraron temprano a trabajar y no pararon de crecer hasta la ingeniería. Una persona disciplinada y cercana, que recorre el mundo, aprende idiomas y arma una <b>buena familia</b> en un lugar donde haya salud, bienestar y futuro.</p></div>
+ </div>
+</section>
+
+<!-- REFLEXION -->
+<section id="reflexion" class="alt">
+ <div class="inner">
+  <div class="reveal"><span class="eyebrow">Texto reflexivo</span>
+  <h2>Lo que pienso de mi camino</h2>
+  <p class="lead">Una mirada escrita a mi cartografía, contada como la siento.</p></div>
+  <div class="essay reveal d1">
+   <p class="first">Cuando me pongo a pensar en mi proyecto de vida, me doy cuenta de que no es una línea recta ni algo que ya tenga todo resuelto. Es más bien lo que voy armando con las decisiones que tomo, con la gente que me rodea y con lo que aprendo por el camino. Por eso, en vez de dibujarlo como un río o una montaña, preferí mostrarlo a través de lo que de verdad me mueve: la disciplina, las ganas y el enfoque. Para mí eso pesa más que cualquier metáfora.</p>
+   <p>Mi punto de partida tiene que ver, sobre todo, con personas. Mi mejor amigo me enseñó que la confianza se mantiene aunque pase el tiempo y haya distancia de por medio. Mi mejor amiga, que conocí este año, me mostró lo bonito de las conexiones que se dan sin forzarlas. Y mis papás, junto con los entrenadores y profesores que he tenido, han sido esa guía que uno necesita en los momentos justos. Buena parte de lo que soy hoy se la debo a ellos.</p>
+   <p>En el presente, donde mejor me siento es con la gente y hablando. Me sé explicar, y si algo no se entiende, me pongo a dar ejemplos hasta que la idea queda clara. No soy penoso, me relaciono fácil y agarro confianza rápido cuando hay buena química. Esas cosas, que parecen sencillas, son justo las que creo que me van a servir para trabajar en equipo y para abrirme paso en el mundo del desarrollo de software. Eso sí, también tengo claro en qué me falta mejorar: escribir todavía no es lo mío, me enredo con la ortografía y la puntuación, y los públicos muy grandes me ponen algo nervioso. Reconocerlo no me molesta, al contrario, me sirve para ponerme a trabajar en eso.</p>
+   <p>Mis metas las tengo bastante claras y van una detrás de otra. Primero, graduarme de Técnico en Desarrollo de Software. Después, homologar a Ingeniería de Sistemas y empezar a trabajar como programador junior, porque me muero por entrar ya al mundo laboral. En paralelo está el fútbol, que si se da me gustaría llevarlo lo más lejos posible, siempre de a poco como enseña el deporte. Y más adelante, ser un buen profesional, viajar, aprender idiomas y formar una familia en un lugar donde se viva bien.</p>
+   <p>Para todo eso no estoy solo: tengo a mi familia, a mis amigos, a la universidad y lo que voy aprendiendo. Pero lo que de verdad me empuja es lo de adentro, las ganas de hacer bien las cosas y de mantenerme constante. Hacer esta cartografía me sirvió para ver cómo se conecta lo personal con lo profesional, y para entender que mi forma de ser con la gente es clave para lograr lo que quiero. Al final, mi proyecto de vida no es un punto de llegada fijo, sino la decisión de seguir avanzando con rumbo, bien acompañado y sin dejar de ser yo.</p>
+  </div>
+ </div>
+</section>
+
+<footer>
+ <div class="fl"></div>
+ Cartografía de mi proyecto de vida · <b>Santiago</b><br>
+ Técnico Profesional en Desarrollo de Software · Universidad de la Costa, Barranquilla · Semana 11
+</footer>
+</body>
+</html>
